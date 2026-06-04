@@ -1,4 +1,6 @@
 import "../css/pages/index.css";
+import { renderHeader } from "./modules/header.js";
+renderHeader();
 
 const tabsContainer = document.querySelector(".tabs__container");
 const tabsList = tabsContainer.querySelector(".tabs__list");

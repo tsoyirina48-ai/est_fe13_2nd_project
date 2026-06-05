@@ -6,7 +6,7 @@ export function renderHeader() {
   siteHeader.innerHTML = /* HTML */ `
     <div class="wrapper">
       <nav class="site__nav" aria-labelledby="site-nav-label">
-        <button class="site__nav__togle" aria-expanded="false">
+        <button class="site__nav__toggle" aria-expanded="false">
           <i data-lucide="menu"></i>
         </button>
         <a href="/" class="site__nav__logo" id="site-nav-label">ROUNZ</a>
@@ -31,7 +31,7 @@ export function renderHeader() {
 function initNav() {
   const nav = document.querySelector(".site__nav");
   // nav.classList.add("enhanced");
-  const navButton = document.querySelector(".site__nav__togle");
+  const navButton = document.querySelector(".site__nav__toggle");
   const navCloseBtn = document.querySelector(".site__nav__close");
   const navContent = document.querySelector(".site__nav__content");
   // const isDesktop = window.matchMedia("(min-width: 52em)");

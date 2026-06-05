@@ -8,9 +8,15 @@
   gap: 18px;
 }
 
-.site__nav__togle,
+.site__nav__toggle,
 .site__nav__close {
   all: unset;
+}
+
+.site__nav__toggle:focus-visible,
+.site__nav__close:focus-visible {
+  outline: 4px solid black;
+  outline-offset: 2px;
 }
 
 .site__nav__logo {
@@ -29,7 +35,7 @@
   color: var(--primary);
 }
 
-.site__nav__togle ~ .site__nav__content {
+.site__nav__toggle ~ .site__nav__content {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -46,7 +52,7 @@
   overflow-y: auto;
 }
 
-.site__nav__togle[aria-expanded="true"] ~ .site__nav__content {
+.site__nav__toggle[aria-expanded="true"] ~ .site__nav__content {
   transform: translateX(0);
   box-shadow: 0 0 0 150vmax rgba(0, 0, 0, 0.75);
 }

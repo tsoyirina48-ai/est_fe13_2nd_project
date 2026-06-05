@@ -9,8 +9,8 @@ export function renderHeader() {
         <button class="site__nav__togle" aria-expanded="false">
           <i data-lucide="menu"></i>
         </button>
-        <span id="site-nav-label">ROUNZ</span>
-        <ul role="list">
+        <a href="/" class="site__nav__logo" id="site-nav-label">ROUNZ</a>
+        <ul class="site__nav__actions" role="list">
           <li>
             <a href="#"><i data-lucide="user-round"></i></a>
           </li>
@@ -18,7 +18,7 @@ export function renderHeader() {
             <a href="#"><i data-lucide="shopping-cart"></i></a>
           </li>
         </ul>
-        <div class="site__nav__content">
+        <div class="site__nav__content" inert>
           <button class="site__nav__close">닫기</button>
         </div>
       </nav>
@@ -34,11 +34,9 @@ function initNav() {
   const navButton = document.querySelector(".site__nav__togle");
   const navCloseBtn = document.querySelector(".site__nav__close");
   const navContent = document.querySelector(".site__nav__content");
-  const isDesktop = window.matchMedia("(min-width: 52em)");
+  // const isDesktop = window.matchMedia("(min-width: 52em)");
   const main = document.querySelector("main");
   const siblings = document.querySelectorAll(".wrapper > *:not(nav)");
-
-  let navIsShown = false;
 
   navCloseBtn.addEventListener(
     "click",
@@ -49,6 +47,8 @@ function initNav() {
     false
   );
 
+  navButton.addEventListener("click", showNavigationContent, false);
+
   function hideNav() {
     nav.classList.add("closed");
     navButton.setAttribute("aria-expanded", "false");
@@ -57,7 +57,6 @@ function initNav() {
     // 	let btn = dropdown.parentNode.querySelector("button");
     // 	btn.setAttribute("aria-expanded", "false");
     // });
-    navIsShown = false;
     makeNavInert();
     removePageInert();
   }
@@ -70,7 +69,7 @@ function initNav() {
     //   footer.setAttribute("inert", "");
     // }
 
-    for (var i = 0; i < siblings.length; i++) {
+    for (let i = 0; i < siblings.length; i++) {
       siblings[i].setAttribute("inert", "true");
     }
   }
@@ -83,7 +82,7 @@ function initNav() {
     // 	footer.removeAttribute("inert");
     // }
 
-    for (var i = 0; i < siblings.length; i++) {
+    for (let i = 0; i < siblings.length; i++) {
       siblings[i].removeAttribute("inert");
     }
   }
@@ -98,41 +97,8 @@ function initNav() {
 
   function showNavigationContent() {
     navButton.setAttribute("aria-expanded", "true");
-    navIsShown = true;
     removeNavInert();
     makePageInert();
     navCloseBtn.focus();
   }
-
-  const handleResize = e => {
-    if (e.matches) {
-      // is "desktop"
-      navContent.removeAttribute("hidden");
-      navButton.setAttribute("hidden", "");
-      navCloseBtn.setAttribute("hidden", "");
-
-      navContent.removeAttribute("role");
-      navContent.removeAttribute("aria-labelledby");
-
-      navCloseBtn.setAttribute("hidden", "");
-      removeNavInert();
-      removePageInert();
-    } else {
-      navButton.removeAttribute("hidden");
-      navCloseBtn.removeAttribute("hidden");
-      navContent.setAttribute("role", "dialog");
-      navContent.setAttribute("aria-labelledby", "site-nav-label");
-
-      if (navIsShown) {
-        makeNavInert();
-      } else {
-        removeNavInert();
-      }
-
-      navButton.addEventListener("click", showNavigationContent, false);
-    }
-  };
-
-  isDesktop.addEventListener("change", e => handleResize(e));
-  handleResize(isDesktop);
 }

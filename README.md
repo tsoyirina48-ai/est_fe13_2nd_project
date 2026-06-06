@@ -2,6 +2,12 @@
 
 > ROUNZ 홈페이지의 UI/UX를 참조하여 홈페이지를 JavaScript를 활용하여 제작
 
+![Deploy Status](https://github.com/agw76638/est_fe13_2nd_project/actions/workflows/deploy.yml/badge.svg)
+[![Vite Badge](https://img.shields.io/badge/Bundler-Vite-646CFF?logo=vite&logoColor=white)](https://vitejs.dev)
+[![Formatted with Biome](https://img.shields.io/badge/Formatted_with-Biome-60a5fa?style=flat&logo=biome)](https://biomejs.dev/)
+[![Linted with Biome](https://img.shields.io/badge/Linted_with-Biome-60a5fa?style=flat&logo=biome)](https://biomejs.dev)
+![GitHub License](https://img.shields.io/github/license/agw76638/est_fe13_2nd_project)
+
 ## 제작 계획
 
 ```mermaid

@@ -12,9 +12,14 @@
   align-items: center;
 }
 
+.site__nav__logo {
+  line-height: 1;
+}
+
 .site__nav__toggle,
 .site__nav__close {
   all: unset;
+  display: flex;
   cursor: pointer;
 }
 
@@ -37,6 +42,7 @@
 }
 
 .site__nav__actions a {
+  display: grid;
   color: var(--primary);
   text-decoration: none;
 }

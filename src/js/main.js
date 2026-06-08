@@ -5,3 +5,11 @@ import { renderHeader } from "./modules/header.js";
 document.addEventListener("DOMContentLoaded", () => {
   renderHeader();
 });
+
+const page = document.body.dataset.page;
+
+switch (page) {
+  case "main":
+    import("./pages/index.js");
+    break;
+}

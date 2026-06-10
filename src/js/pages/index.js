@@ -10,7 +10,7 @@ import { renderTabs } from "../modules/tabs.js";
 const swiper = new Swiper(".swiper", {
   modules: [Navigation, Pagination, Autoplay],
   // Optional parameters
-  loop: true,
+  loop: false,
 
   // If we need pagination
   pagination: {

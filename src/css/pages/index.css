@@ -24,6 +24,18 @@
   aspect-ratio: 1 / 1;
 }
 
+@media (min-width: 75rem) {
+  .swiper {
+    max-width: 600px;
+    margin-inline: auto;
+  }
+
+  .swiper img {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+}
+
 .info [role="tablist"] {
   display: flex;
   gap: 1rem;

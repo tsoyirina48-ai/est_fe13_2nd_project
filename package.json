@@ -10,7 +10,8 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.16",
-    "vite": "^8.0.12"
+    "vite": "^8.0.12",
+    "vite-plugin-css-injected-by-js": "^5.0.1"
   },
   "dependencies": {
     "lucide": "^1.17.0",

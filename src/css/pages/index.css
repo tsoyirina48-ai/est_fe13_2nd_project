@@ -20,9 +20,8 @@
   }
 }
 
-.hero__swiper {
-  width: 600px;
-  height: 300px;
+.swiper {
+  aspect-ratio: 1 / 1;
 }
 
 .info [role="tablist"] {

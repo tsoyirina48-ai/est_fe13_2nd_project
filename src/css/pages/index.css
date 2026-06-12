@@ -74,3 +74,22 @@
   height: 100%;
   object-fit: cover;
 }
+
+.main__review .auto-grid {
+  --min-col-size: calc(42.5rem / 3);
+}
+
+.main__review-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--card);
+  border-radius: 1rem;
+}
+
+.main__review-card img {
+  width: 30%;
+  background-color: var(--background);
+  border-radius: 50%;
+}

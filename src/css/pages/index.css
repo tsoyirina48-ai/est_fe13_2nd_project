@@ -75,6 +75,17 @@ body {
   border-radius: 0.5rem;
 }
 
+.info details {
+  padding: 0.5rem 1rem;
+  margin-block: 0.5rem;
+  border: 1px solid var(--outline);
+  border-radius: 0.25rem;
+}
+
+.info details > p {
+  padding-block: 0.5rem;
+}
+
 .main__notice__container {
   display: flex;
   justify-content: space-between;

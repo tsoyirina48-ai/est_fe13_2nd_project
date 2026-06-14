@@ -67,6 +67,9 @@ function renderTabContent() {
     eventItem.querySelector(".tab__panel--event__title").textContent =
       event.title;
 
+    eventItem.querySelector(".tab__panel--event__description").textContent =
+      event.description;
+
     eventItemContainer.appendChild(eventItem);
   });
 
@@ -74,6 +77,8 @@ function renderTabContent() {
     const faqItem = faqItemTemplate.content.cloneNode(true);
     faqItem.querySelector(".tab__panel--faq__question").textContent =
       faq.question;
+
+    faqItem.querySelector(".tab__panel--faq__answer").textContent = faq.answer;
 
     faqItemContainer.appendChild(faqItem);
   });

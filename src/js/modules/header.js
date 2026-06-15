@@ -1,4 +1,3 @@
-import { createIcons, Menu, ShoppingCart, UserRound } from "lucide";
 import "../../css/modules/header.css";
 
 const siteHeader = document.querySelector(".site__header");
@@ -43,7 +42,6 @@ export function renderHeader() {
       </nav>
     </div>
   `;
-  createIcons({ icons: { Menu, UserRound, ShoppingCart } });
   initNav();
 }
 

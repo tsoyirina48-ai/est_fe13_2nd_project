@@ -248,3 +248,18 @@ dd {
 .specs-grid dl dd {
   margin-bottom: calc(var(--base-unit) / 2);
 }
+
+.services-grid {
+  display: flex;
+  gap: calc(var(--base-unit) / 2);
+}
+.service-card {
+  width: 50%;
+  padding: 20px;
+  background: var(--tertiary-container);
+  border-radius: 10px;
+}
+
+.service-card * {
+  color: var(--surface-container);
+}

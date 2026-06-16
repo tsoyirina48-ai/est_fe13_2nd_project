@@ -1,7 +1,7 @@
 import "modern-normalize";
 import "../../css/style.css";
 
-import { renderHeader } from "../modules/header.js";
+import "../modules/header.js";
 import "../../js/modules/footer.js";
 import "../../css/pages/productList.css";
 
@@ -11,8 +11,6 @@ const countPerPage = 4;
 const currentPage = 1;
 let products = [];
 let filteredData = [];
-
-renderHeader();
 
 async function fetchProducts() {
   try {
@@ -43,15 +41,15 @@ function renderProducts(data) {
           <div class="product-card__image-container">
             <img
               class="product-card__image"
-              src="/images/1.webp"
+              src="${p.thumbnail}"
               alt="RAY-BAN Classic Aviator"
               loading="lazy"
             >
             <span class="product-card__badge">BEST</span>
           </div>
           <div class="product-card__content">
-            <p class="product-card__brand">RAY-BAN</p>
-            <h3 class="product-card__title">Classic Aviator</h3>
+            <p class="product-card__brand">${p.brand}</p>
+            <h3 class="product-card__title">${p.title}</h3>
             <div class="product-card__tags">
               <span class="product-card__tag">Aviator</span>
               <span class="product-card__tag">Black</span>
@@ -123,11 +121,10 @@ function renderProducts(data) {
   );
 
   productGrid.innerHTML = productHTML.join("");
-  // filteredCount.innerHTML = `총 ${data.length}개 상품`; //총 248개 상품
 }
 
 function paginate(data, page) {
-  const start = (page - 1) * countPerPage;
+  const start = (page - 1) * countPerPage + 1;
   const end = start + countPerPage;
   return data.slice(start, end);
 }

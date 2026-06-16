@@ -12,12 +12,12 @@
     <header class="site__header"></header>
     <main id="content">
       <section class="hero" aria-labelledby="hero-heading">
-        <div class="wrapper hero__wrapper">
-          <div class="hero__heading">
+        <div class="wrapper pile">
+          <div class="hero__heading-group">
             <h1 id="hero-heading" class="text-headline-medium">
               ROUNZ — 세상을 다르게 보는 방법
             </h1>
-            <p class="text-body-medium">
+            <p class="text-title-small">
               안경을 사고 쓰는 일이 즐겨운 경험이 되도록
             </p>
           </div>
@@ -27,24 +27,27 @@
               <div class="swiper-slide">
                 <img
                   class="hero__image-1"
-                  src="/images/2.webp"
+                  src="/images/hero/hero1.webp"
                   alt=""
+                  srcset="/images/hero/hero1-480.webp 480w, /images/hero/hero1-768.webp 768w, /images/hero/hero1.webp 1200w"
                   fetchpriority="high"
                 >
               </div>
               <div class="swiper-slide">
                 <img
                   class="hero__image-2"
-                  src="/images/3.webp"
+                  src="/images/hero/hero2.webp"
                   alt=""
+                  srcset="/images/hero/hero2-480.webp 480w, /images/hero/hero2-768.webp 768w, /images/hero/hero2.webp 1200w"
                   loading="lazy"
                 >
               </div>
               <div class="swiper-slide">
                 <img
                   class="hero__image-3"
-                  src="/images/4.webp"
+                  src="/images/hero/hero3.webp"
                   alt=""
+                  srcset="/images/hero/hero3-480.webp 480w, /images/hero/hero3-768.webp 768w, /images/hero/hero3.webp 1200w"
                   loading="lazy"
                 >
               </div>
@@ -237,10 +240,10 @@
       <section class="main__featured" aria-labelledby="main-featured-heading">
         <div class="wrapper">
           <h2 id="main-featured-heading">추천 컬렉션</h2>
-          <div class="auto-grid">
+          <div class="main__featured-container auto-grid">
             <template id="main-featured-template">
               <div class="main_featured-card">
-                <img src="" alt="">
+                <img class="main__featured-image" src="" alt="" loading="lazy">
                 <div class="main__featured-card-content">
                   <p class="main__featured-brand"></p>
                   <h3 class="main__featured-title"></h3>
@@ -248,84 +251,6 @@
                 </div>
               </div>
             </template>
-            <div class="main_featured-card">
-              <img
-                src="/images/5.webp"
-                alt="블리츠 고글 브리즈 선글라스 BZ52102 BZS52102 4종 택1"
-                loading="lazy"
-              >
-              <div class="main__featured-card-content">
-                <p class="main__featured-brand"></p>
-                <h3 class="main__featured-title">
-                  블리츠 고글 브리즈 선글라스 BZ52102 BZS52102 4종 택1
-                </h3>
-                <p class="main__featured-price"></p>
-              </div>
-            </div>
-            <div class="main_featured-card">
-              <img
-                src="/images/2.webp"
-                alt="실버 메탈 RB3774D 003/87 55mm 레이밴 선글라스"
-                loading="lazy"
-              >
-              <div class="main__featured-card-content">
-                <p class="main__featured-brand"></p>
-                <h3 class="main__featured-title">
-                  실버 메탈 RB3774D 003/87 55mm 레이밴 선글라스
-                </h3>
-                <p class="main__featured-price"></p>
-              </div>
-            </div>
-            <div class="main_featured-card">
-              <img
-                src="/images/44.webp"
-                alt="오클리 수트로 스포츠 고글 선글라스 OO9406A-04"
-                loading="lazy"
-              >
-              <div class="main__featured-card-content">
-                <p class="main__featured-brand"></p>
-                <h3 class="main__featured-title">
-                  오클리 수트로 스포츠 고글 선글라스 OO9406A-04
-                </h3>
-                <p class="main__featured-price"></p>
-              </div>
-            </div>
-            <div class="main_featured-card">
-              <img
-                src="/images/35.webp"
-                alt="블랙 LURE C1 55mm 퍼블릭비컨 루어 선글라스"
-                loading="lazy"
-              >
-              <div class="main__featured-card-content">
-                <p class="main__featured-brand"></p>
-                <h3 class="main__featured-title">
-                  블랙 LURE C1 55mm 퍼블릭비컨 루어 선글라스
-                </h3>
-                <p class="main__featured-price"></p>
-              </div>
-            </div>
-            <div class="main_featured-card">
-              <img
-                src="/images/24.webp"
-                alt="프라다 선글라스 아시안핏 SPR17WF/SPR26ZF 5종 택1"
-                loading="lazy"
-              >
-              <div class="main__featured-card-content">
-                <p class="main__featured-brand"></p>
-                <h3 class="main__featured-title">
-                  프라다 선글라스 아시안핏 SPR17WF/SPR26ZF 5종 택1
-                </h3>
-                <p class="main__featured-price"></p>
-              </div>
-            </div>
-            <div class="main_featured-card">
-              <img src="/images/51.webp" alt="NK762 C1" loading="lazy">
-              <div class="main__featured-card-content">
-                <p class="main__featured-brand"></p>
-                <h3 class="main__featured-title">NK762 C1</h3>
-                <p class="main__featured-price"></p>
-              </div>
-            </div>
           </div>
         </div>
       </section>

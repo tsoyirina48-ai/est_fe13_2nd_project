@@ -92,14 +92,12 @@ function renderFetured() {
   );
   const featuredContainer = document.querySelector(".main__featured-container");
 
-  const featuredProducts = products.filter(p => p.featured);
+  const featuredProducts = products.slice(0, 6);
 
-  featuredContainer.innerHTML = "";
-  const fragment = new DocumentFragment();
+  const skeletonCards = featuredContainer.querySelectorAll(".skeleton-card");
 
-  featuredProducts.forEach(featuredProduct => {
+  featuredProducts.forEach((featuredProduct, index) => {
     const featuredItem = featuredItemTemplate.content.cloneNode(true);
-
     featuredItem.querySelector(".main__featured-image").src =
       featuredProduct.thumbnail;
     featuredItem.querySelector(".main__featured-image").alt =
@@ -111,10 +109,8 @@ function renderFetured() {
     featuredItem.querySelector(".main__featured-price").textContent =
       `${featuredProduct.price}₩`;
 
-    fragment.appendChild(featuredItem);
-    console.log(fragment.content);
+    skeletonCards[index].replaceWith(featuredItem);
   });
-  featuredContainer.innerHTML = fragment.content;
 }
 renderFetured();
 

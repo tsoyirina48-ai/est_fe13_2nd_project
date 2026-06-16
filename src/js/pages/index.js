@@ -107,7 +107,7 @@ function renderFetured() {
     featuredItem.querySelector(".main__featured-title").textContent =
       featuredProduct.title;
     featuredItem.querySelector(".main__featured-price").textContent =
-      `$₩{featuredProduct.price}`;
+      `₩${featuredProduct.price}`;
 
     skeletonCards[index].replaceWith(featuredItem);
   });

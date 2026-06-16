@@ -45,7 +45,11 @@ main > section {
 }
 
 .swiper-wrapper {
-  height: fit-content;
+  aspect-ratio: 16 / 9;
+}
+
+.swiper-slide {
+  aspect-ratio: 16 / 9;
 }
 
 .swiper img {

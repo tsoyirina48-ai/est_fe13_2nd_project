@@ -46,10 +46,10 @@ function renderTabContent() {
   const eventItemContainer = document.querySelector("#event");
   const faqItemContainer = document.querySelector("#faq");
 
-  const skeletonGrid = document.querySelector(".skeleton-grid");
-  skeletonGrid.innerHTML = "";
+  const skeletonItem = noticeItemContainer.querySelectorAll(".skeleton");
+  // skeletonGrid.innerHTML = "";
 
-  notices.forEach(notice => {
+  notices.forEach((notice, i) => {
     const noticeItem = noticeItemTemplate.content.cloneNode(true);
 
     noticeItem.querySelector(".tab__panel--notice__title").textContent =
@@ -57,7 +57,7 @@ function renderTabContent() {
     noticeItem.querySelector(".tab__panel--notice__date").textContent =
       notice.date;
 
-    noticeItemContainer.appendChild(noticeItem);
+    skeletonItem[i].replaceWith(noticeItem);
   });
 
   events.forEach(event => {

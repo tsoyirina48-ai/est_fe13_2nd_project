@@ -37,7 +37,7 @@ body {
 }
 
 .info .tabs__container {
-  min-height: fit-content;
+  min-height: 200px;
 }
 
 .info [role="tablist"] {

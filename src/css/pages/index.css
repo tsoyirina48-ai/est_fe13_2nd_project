@@ -37,7 +37,7 @@ body {
 }
 
 .info .tabs__container {
-  min-height: 200px;
+  min-height: fit-content;
 }
 
 .info [role="tablist"] {
@@ -99,6 +99,20 @@ body {
 .main__featured .auto-grid {
   --min-col-size: calc(67.5rem / 6);
   --overflow-prevent: calc((100% - var(--gap-size)) / 2);
+}
+
+.main__featured .img-placeholder {
+  aspect-ratio: 1 / 1;
+}
+
+.main__featured-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.main__featured-card-content > * {
+  margin: 0;
 }
 
 .main_featured-card img {

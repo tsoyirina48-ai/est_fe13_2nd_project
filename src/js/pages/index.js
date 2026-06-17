@@ -1,19 +1,17 @@
-import "modern-normalize";
 import "../../css/style.css";
-
+import "../../css/pages/index.css";
 import "../modules/header.js";
 
 import Swiper from "swiper";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "swiper/css/autoplay";
-import "../../css/pages/index.css";
+
 import { renderTabs } from "../modules/tabs.js";
 
 const swiper = new Swiper(".swiper", {
-  modules: [Navigation, Pagination, Autoplay],
+  modules: [Navigation, Pagination],
   // Optional parameters
   loop: false,
 
@@ -106,6 +104,8 @@ function renderFetured() {
       featuredProduct.brand;
     featuredItem.querySelector(".main__featured-title").textContent =
       featuredProduct.title;
+    featuredItem.querySelector(".main__featured-rating").textContent =
+      featuredProduct.rating;
     featuredItem.querySelector(".main__featured-price").textContent =
       `₩${featuredProduct.price}`;
 
@@ -114,4 +114,4 @@ function renderFetured() {
 }
 renderFetured();
 
-import "../../js/modules/footer.js";
+import "../modules/footer.js";

@@ -136,8 +136,30 @@ main > section {
   --overflow-prevent: calc((100% - var(--gap-size)) / 2);
 }
 
+.main__featured-card {
+  position: relative;
+}
+
 .main__featured .img-placeholder {
   aspect-ratio: 1 / 1;
+}
+
+.main__featured-card a {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  color: var(--on-background);
+  text-decoration: none;
+}
+
+.main__featured-card a::after {
+  position: absolute;
+  inset: 0;
+  display: block;
+  content: "";
 }
 
 .main__featured-card-content {
@@ -152,6 +174,12 @@ main > section {
 
 .main_featured-card img {
   aspect-ratio: 1 / 1;
+}
+
+.main__featured-rating-container svg {
+  width: 0.75rem;
+  height: 0.75rem;
+  fill: var(--primary);
 }
 
 .main__brand {

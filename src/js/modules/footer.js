@@ -1,8 +1,5 @@
-import "../../css/modules/footer.css";
-
-const siteFooter = document.querySelector(".site__footer");
-
 function renderFooter() {
+  const siteFooter = document.querySelector(".site__footer");
   siteFooter.innerHTML = `
       <div class="wrapper">
         <h2 class="site__footer__heading text-title-medium">ROUNZ</h3>

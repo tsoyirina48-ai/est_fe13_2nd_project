@@ -7,6 +7,11 @@ main > section {
   padding-block: 28px;
 }
 
+.hero .wrapper {
+  container-name: hero-img;
+  container-type: inline-size;
+}
+
 .hero__heading-group {
   z-index: 2;
   display: flex;
@@ -56,6 +61,20 @@ main > section {
 .swiper img {
   aspect-ratio: 16 / 9;
   object-fit: cover;
+}
+
+@container hero-img (width < 400px) {
+  .hero__heading-group {
+    gap: 0.25rem;
+  }
+
+  .hero__heading-group h1 {
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+  .hero__heading-group p {
+    text-wrap: balance;
+  }
 }
 
 .info .tabs__container {

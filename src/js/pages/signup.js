@@ -1,4 +1,4 @@
-import { renderHeader } from '../modules/header.js';
+import '../modules/header.js';
 
 renderHeader();
 

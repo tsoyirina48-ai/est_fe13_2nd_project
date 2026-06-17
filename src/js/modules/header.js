@@ -38,8 +38,7 @@ function renderHeader() {
         <div class="site__nav__content" inert>
           <button class="site__nav__close" aria-label="메뉴 닫기">닫기</button>
 
-          <a href="./login.html">로그인</a>
-          <a href="./signup.html">회원가입</a>
+          
         </div>
       </nav>
     </div>

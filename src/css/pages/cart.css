@@ -8,9 +8,6 @@
   margin-inline: auto;
 }
 
-main {
-}
-
 @media (min-width: 481px) {
   #content {
     max-width: 720px;
@@ -49,12 +46,14 @@ main {
   gap: 20px;
 }
 
-.cart__product article {
+.cart__item {
   display: flex;
   gap: 16px;
   align-items: center;
+
   min-height: 120px;
   padding-right: 10px;
+  padding-bottom: 15px;
   padding-left: 10px;
 
   background: var(--surface);

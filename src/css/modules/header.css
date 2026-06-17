@@ -69,8 +69,7 @@
 .site__nav__actions {
   display: flex;
   gap: 1em;
-  padding-left: 0;
-  margin-left: auto;
+  justify-self: end;
 }
 
 .site__nav__actions a {

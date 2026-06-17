@@ -37,7 +37,6 @@ function renderHeader() {
               <span class="cart__counter badge">1</span>
             </a>
           </li>
-          <li>
         </ul>
         <div class="site__nav__content" inert>
           <button class="site__nav__close">

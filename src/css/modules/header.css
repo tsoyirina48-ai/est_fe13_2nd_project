@@ -25,15 +25,16 @@
   align-items: center;
 }
 
+.site__nav ul {
+  padding: 0;
+  list-style: none;
+}
+
 .site__nav__main {
   display: flex;
   gap: 1rem;
   width: fit-content;
   padding-left: 0;
-}
-
-.site__nav__main li {
-  list-style: none;
 }
 
 .site__nav__logo {
@@ -50,6 +51,11 @@
   cursor: pointer;
 }
 
+.site__nav__close {
+  align-self: flex-end;
+  width: max-content;
+}
+
 .site__nav select {
   justify-self: center;
 }
@@ -63,9 +69,7 @@
 .site__nav__actions {
   display: flex;
   gap: 1em;
-  padding-left: 0;
-  margin-left: auto;
-  list-style: none;
+  justify-self: end;
 }
 
 .site__nav__actions a {
@@ -80,8 +84,11 @@
   bottom: 0;
   left: 0;
   z-index: 10;
+  display: flex;
+  flex-direction: column;
   width: 75vw;
   max-width: 400px;
+  padding: 1rem 1.5rem;
   overflow-y: auto;
   background-color: var(--background);
   box-shadow: 0 0 0 150vmax rgb(from var(--shadow) r g b / 0);
@@ -94,6 +101,21 @@
 .site__nav:has(.site__nav__toggle[aria-expanded="true"]) .site__nav__content {
   box-shadow: 0 0 0 150vmax rgb(from var(--shadow) r g b / 0.75);
   transform: translateX(0);
+}
+
+.site__nav__content li {
+  border-bottom: 1px solid var(--outline-variant);
+}
+
+.site__nav__content li:last-of-type {
+  border-bottom: none;
+}
+
+.site__nav__content a {
+  display: inline-block;
+  padding-block: 0.75rem;
+  color: var(--on-background);
+  text-decoration: none;
 }
 
 .cart__counter {

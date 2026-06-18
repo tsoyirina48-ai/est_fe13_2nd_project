@@ -49,6 +49,7 @@ async function fetchProducts() {
     renderColors();
     renderPrices();
     initFilterEvents();
+    applyUrlFilter();
   } catch {
   } finally {
   }
@@ -545,3 +546,5 @@ productGrid.addEventListener("click", e => {
 });
 
 updateCartCount();
+
+import { applyUrlFilter } from "../modules/categoryLink.js";

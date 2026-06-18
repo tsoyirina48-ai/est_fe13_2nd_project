@@ -233,7 +233,7 @@ a {
   display: block;
 }
 
-.product-detail h2 {
+.product-detail h4 {
   color: var(--primary);
 }
 
@@ -618,6 +618,18 @@ dd {
   position: absolute;
   left: 0;
   content: "-";
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  white-space: nowrap;
+  border: 0;
+  clip-path: inset(50%);
 }
 
 /* 반응형 */

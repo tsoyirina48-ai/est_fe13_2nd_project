@@ -70,11 +70,11 @@ function renderCart() {
               </label>
               <img src="${item.thumb}" alt="" class="cart__product-image">
               <div class="cart__product-info">
-                <p class="cart__brand">${item.brand}</p>
+                <p class="cart__product-brand">${item.brand}</p>
 
-                <h3>${item.title}</h3>
+                <h3 class="cart__product-name">${item.title}</h3>
 
-                <p class="cart__price">₩${formatPrice(item.price)}</p>
+                <p class="cart__product-price">₩${formatPrice(item.price)}</p>
                 <div class="cart__quantity-control">
                   <button
                     type="button"

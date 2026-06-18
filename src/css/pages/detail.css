@@ -72,6 +72,10 @@ a {
   color: var(--detail-body);
 }
 
+.detail_product_right .product-brand-like a span {
+  color: var(--tertiary);
+}
+
 .product-title {
   color: var(--secondary);
 }
@@ -167,31 +171,32 @@ a {
   width: 100%;
 }
 
-.product-actions a {
+.product-actions button {
   display: flex;
   gap: calc(var(--base-unit) / 2);
   align-items: center;
   justify-content: center;
   height: calc(var(--base-unit) * 2);
   color: var(--on-primary-container);
+  cursor: pointer;
   background: var(--primary-container);
   border-radius: 10px;
   transition: 0.3s;
 }
-.product-actions a span {
+.product-actions button span {
   line-height: calc(var(--base-unit) * 2);
 }
-.product-actions a:last-child {
+.product-actions button:last-child {
   color: var(--primary-container);
   background: var(--on-primary-container);
   border: 1px solid var(--primary-container);
 }
-.product-actions a:hover {
+.product-actions button:hover {
   color: var(--primary-container);
   background: var(--on-primary-container);
   border: 1px solid var(--primary-container);
 }
-.product-actions a:last-child:hover {
+.product-actions button:last-child:hover {
   color: var(--on-primary-container);
   background: var(--primary-container);
 }
@@ -286,13 +291,18 @@ dd {
   align-items: center;
 }
 .service-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--base-unit);
+  justify-content: space-between;
   width: 50%;
-  padding: 20px;
+  padding: var(--base-unit);
   background: var(--surface-container);
   border-radius: 10px;
 }
 
 .service-card > * {
+  margin: 0;
   color: var(--tertiary);
 }
 .service-card a {
@@ -300,7 +310,6 @@ dd {
   gap: calc(var(--base-unit) / 2);
   align-items: center;
   justify-content: center;
-  width: 25%;
   padding: 10px;
   color: var(--on-tertiary);
   background: var(--tertiary);
@@ -316,7 +325,7 @@ dd {
   background: var(--surface-container);
 }
 .service-card a:hover span {
-  transform: translateX(5px);
+  transform: translateX(10px);
 }
 
 /* 후기 섹션 */
@@ -659,12 +668,8 @@ dd {
   .product-actions * {
     font-size: 0.875rem;
   }
-  .product-actions a {
+  .product-actions button {
     gap: calc(var(--base-unit) / 4);
-  }
-
-  .service-card a {
-    width: 50%;
   }
   body {
     padding-bottom: 60px;

@@ -87,6 +87,14 @@
   margin: 0 16px;
 }
 
+.cart__top {
+  margin-left: 20px;
+}
+
+.recommend h2 {
+  margin-left: 20px;
+}
+
 .cart-layout {
   display: grid;
   background: var(--surface-container-low);

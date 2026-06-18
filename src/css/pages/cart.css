@@ -37,7 +37,7 @@
 .cart__controls {
   display: flex;
   gap: 12px;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .cart__list {
@@ -74,6 +74,7 @@
   top: 24px;
   display: flex;
   flex-direction: column;
+  width: 316px;
   height: fit-content;
   padding: 24px;
   margin-top: 15px;
@@ -85,7 +86,7 @@
 }
 
 .cart-summary strong {
-  font-size: 1.5rem;
+  font-size: 20px;
   white-space: nowrap;
 }
 
@@ -106,6 +107,25 @@
 .cart__select-all-btn,
 .cart__delete-btn {
   font-size: 14px;
+}
+
+.cart__quantity-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  padding: 0;
+
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.cart__quantity-btn:active {
+  opacity: 0.5;
 }
 
 .cart__list,
@@ -149,6 +169,9 @@
 }
 
 .cart__quantity-control {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   margin-top: 8px;
 }
 

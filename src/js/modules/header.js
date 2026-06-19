@@ -66,6 +66,9 @@ function initNav() {
   const main = document.querySelector("main");
   const footer = document.querySelector("footer");
   const siblings = document.querySelectorAll(".wrapper > *:not(nav)");
+  const drawerSiblings = document.querySelectorAll(
+    ".site__nav > *:not(.site__nav__content)",
+  );
 
   navCloseBtn.addEventListener(
     "click",
@@ -113,7 +116,11 @@ function initNav() {
     }
 
     for (let i = 0; i < siblings.length; i++) {
-      siblings[i].setAttribute("inert", "true");
+      siblings[i].setAttribute("inert", "");
+    }
+
+    for (let i = 0; i < drawerSiblings.length; i++) {
+      drawerSiblings[i].setAttribute("inert", "");
     }
   }
 
@@ -127,6 +134,10 @@ function initNav() {
 
     for (let i = 0; i < siblings.length; i++) {
       siblings[i].removeAttribute("inert");
+    }
+
+    for (let i = 0; i < drawerSiblings.length; i++) {
+      drawerSiblings[i].removeAttribute("inert");
     }
   }
 

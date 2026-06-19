@@ -25,15 +25,16 @@
   align-items: center;
 }
 
+.site__nav ul {
+  padding: 0;
+  list-style: none;
+}
+
 .site__nav__main {
   display: flex;
   gap: 1rem;
   width: fit-content;
   padding-left: 0;
-}
-
-.site__nav__main li {
-  list-style: none;
 }
 
 .site__nav__logo {
@@ -48,6 +49,11 @@
   all: unset;
   display: flex;
   cursor: pointer;
+}
+
+.nav-closeBtn {
+  align-self: flex-end;
+  width: max-content;
 }
 
 .site__nav select {
@@ -65,7 +71,6 @@
   gap: 1em;
   padding-left: 0;
   margin-left: auto;
-  list-style: none;
 }
 
 .site__nav__actions a {

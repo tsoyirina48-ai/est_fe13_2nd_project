@@ -7,8 +7,21 @@ import "../../css/pages/productList.css";
 
 const productGrid = document.querySelector(".grid");
 const paginationContainer = document.querySelector(".pagination");
+const filterBtn = document.querySelector(".filter-button");
+const filterPanel = document.querySelector(".filter-panel");
+const filterCloseBtn = document.querySelector(".filter-panel__close-button");
+const categoryFilter = document.querySelector("#category-filter");
+const brandFilter = document.querySelector("#brand-filter");
+const colorFilter = document.querySelector("#color-filter");
+const priceFilter = document.querySelector("#Price-filter");
+const searchInput = document.querySelector(".search-input");
 
-const countPerPage = 4;
+let selectedCategories = [];
+let selectedBrands = [];
+let selectedColors = [];
+let selectedPrices = [];
+
+let countPerPage = 4;
 const pagerPerGroup = 3;
 let currentPage = 1;
 let products = [];
@@ -16,9 +29,7 @@ let filteredData = [];
 
 // 별 아이콘
 const STAR_FILLED = `<svg class="product-card__star product-card__star--filled" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
-
 const STAR_HALF = `<svg class="product-card__star product-card__star--half" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17.8 5.8 21 7 14.1 2 9.3l7-1L12 2"/></svg>`;
-
 const STAR_EMPTY = `<svg class="product-card__star product-card__star--empty" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
 
 async function fetchProducts() {
@@ -28,9 +39,15 @@ async function fetchProducts() {
     products = data.products;
     filteredData = products;
     console.log(filteredData);
+    updateCountPerPage();
+    renderPagination(filteredData.length);
 
     renderProducts(filteredData);
-    renderPagination(filteredData.length);
+    renderCategories();
+    renderBrands();
+    renderColors();
+    renderPrices();
+    initFilterEvents();
   } catch {
   } finally {
   }
@@ -129,7 +146,7 @@ function generateStarRating(rating) {
 
 // 페이지 네이션 생성
 function renderPagination(totalItems) {
-  const totalPages = Math.ceil(totalItems / pagerPerGroup);
+  const totalPages = Math.ceil(totalItems / countPerPage);
   if (totalPages <= 1) {
     paginationContainer.innerHTML = "";
     return;
@@ -178,3 +195,337 @@ function renderPagination(totalItems) {
     });
   }
 }
+
+// 필터 버튼 클릭시 이벤트 (480px )
+if (filterBtn && filterPanel && filterCloseBtn) {
+  filterBtn.addEventListener("click", () => {
+    filterBtn.classList.add("hidden");
+    filterPanel.classList.remove("hidden");
+  });
+
+  filterCloseBtn.addEventListener("click", () => {
+    filterPanel.classList.add("hidden");
+    filterBtn.classList.remove("hidden");
+  });
+}
+
+//카테고리 생성
+function renderCategories() {
+  const categories = [...new Set(products.map(p => p.category))].filter(
+    Boolean,
+  );
+  const frag = document.createDocumentFragment();
+  categories.forEach(c => {
+    const label = document.createElement("label");
+    label.className = "custom-checkbox";
+    label.innerHTML = `
+      <input type="checkbox" name="category" value="${c}">
+      <svg
+        width="32"
+        height="32"
+        viewBox="-4 -4 39 39"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <rect
+          class="checkbox__background"
+          width="35"
+          height="35"
+          x="-2"
+          y="-2"
+          stroke="currentColor"
+          fill="none"
+          stroke-width="3"
+          rx="6"
+          ry="6"
+        ></rect>
+        <polyline
+          class="checkbox__checkmark"
+          points="4,14 12,23 28,5"
+          stroke="transparent"
+          stroke-width="4"
+          fill="none"
+        ></polyline>
+      </svg>
+      <span>${c}</span>
+    `;
+    frag.appendChild(label);
+  });
+  categoryFilter.appendChild(frag);
+}
+
+//브랜드 생성
+function renderBrands() {
+  const brands = [...new Set(products.map(p => p.brand))].filter(Boolean);
+  const frag = document.createDocumentFragment();
+  brands.forEach(b => {
+    const label = document.createElement("label");
+    label.className = "custom-checkbox";
+    label.innerHTML = `
+      <input type="checkbox" name="brand" value="${b}">
+      <svg
+        width="32"
+        height="32"
+        viewBox="-4 -4 39 39"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <rect
+          class="checkbox__background"
+          width="35"
+          height="35"
+          x="-2"
+          y="-2"
+          stroke="currentColor"
+          fill="none"
+          stroke-width="3"
+          rx="6"
+          ry="6"
+        ></rect>
+        <polyline
+          class="checkbox__checkmark"
+          points="4,14 12,23 28,5"
+          stroke="transparent"
+          stroke-width="4"
+          fill="none"
+        ></polyline>
+      </svg>
+      <span>${b}</span>
+    `;
+    frag.appendChild(label);
+  });
+  brandFilter.appendChild(frag);
+}
+
+//색상 생성
+function renderColors() {
+  const colors = [...new Set(products.map(p => p.color))].filter(Boolean);
+  const frag = document.createDocumentFragment();
+  colors.forEach(col => {
+    const label = document.createElement("label");
+    label.className = "custom-checkbox";
+    label.innerHTML = `
+      <input type="checkbox" name="color" value="${col}">
+      <svg
+        width="32"
+        height="32"
+        viewBox="-4 -4 39 39"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <rect
+          class="checkbox__background"
+          width="35"
+          height="35"
+          x="-2"
+          y="-2"
+          stroke="currentColor"
+          fill="none"
+          stroke-width="3"
+          rx="6"
+          ry="6"
+        ></rect>
+        <polyline
+          class="checkbox__checkmark"
+          points="4,14 12,23 28,5"
+          stroke="transparent"
+          stroke-width="4"
+          fill="none"
+        ></polyline>
+      </svg>
+      <span>${col}</span>
+    `;
+    frag.appendChild(label);
+  });
+  colorFilter.appendChild(frag);
+}
+
+//가격대 생성
+function renderPrices() {
+  const priceRanges = [
+    { value: "low", label: "₩200,000 이하" },
+    { value: "middle", label: "₩200,000 ~ ₩400,000" },
+    { value: "high", label: "₩400,000 이상" },
+  ];
+
+  const frag = document.createDocumentFragment();
+  priceRanges.forEach(p => {
+    const label = document.createElement("label");
+    label.className = "custom-checkbox";
+    label.innerHTML = `
+      <input type="checkbox" name="price" value="${p.value}">
+      <svg
+        width="32"
+        height="32"
+        viewBox="-4 -4 39 39"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <rect
+          class="checkbox__background"
+          width="35"
+          height="35"
+          x="-2"
+          y="-2"
+          stroke="currentColor"
+          fill="none"
+          stroke-width="3"
+          rx="6"
+          ry="6"
+        ></rect>
+        <polyline
+          class="checkbox__checkmark"
+          points="4,14 12,23 28,5"
+          stroke="transparent"
+          stroke-width="4"
+          fill="none"
+        ></polyline>
+      </svg>
+      <span>${p.label}</span>
+    `;
+    frag.appendChild(label);
+  });
+  priceFilter.appendChild(frag);
+}
+
+function setupFilterGroup(container, stateVarSetter, allValue = "all") {
+  if (!container) return;
+  const allInput = container.querySelector(`input[value="${allValue}"]`);
+  const itemInputs = container.querySelectorAll(
+    `input:not([value="${allValue}"])`,
+  );
+
+  if (allInput) {
+    allInput.addEventListener("change", () => {
+      if (allInput.checked) {
+        itemInputs.forEach(input => {
+          input.checked = false;
+        });
+        stateVarSetter([]);
+        applyFilter();
+      } else {
+        const anyChecked = [...itemInputs].some(input => input.checked);
+        if (!anyChecked) {
+          allInput.checked = true;
+        }
+      }
+    });
+  }
+
+  itemInputs.forEach(input => {
+    input.addEventListener("change", () => {
+      if (input.checked) {
+        if (allInput) allInput.checked = false;
+      } else {
+        const anyChecked = [...itemInputs].some(input => input.checked);
+        if (!anyChecked && allInput) {
+          allInput.checked = true;
+        }
+      }
+
+      const selectedValues = [...itemInputs]
+        .filter(input => input.checked)
+        .map(input => input.value);
+
+      stateVarSetter(selectedValues);
+      applyFilter();
+    });
+  });
+}
+
+// 모든 필터 그룹 초기화
+function initFilterEvents() {
+  setupFilterGroup(categoryFilter, vals => {
+    selectedCategories = vals;
+  });
+  setupFilterGroup(brandFilter, vals => {
+    selectedBrands = vals;
+  });
+  setupFilterGroup(colorFilter, vals => {
+    selectedColors = vals;
+  });
+  setupFilterGroup(priceFilter, vals => {
+    selectedPrices = vals;
+  });
+
+  if (searchInput) {
+    searchInput.addEventListener("input", () => {
+      applyFilter();
+    });
+  }
+}
+
+// 필터 적용
+function applyFilter() {
+  let result = [...products];
+
+  // 카테고리
+  if (selectedCategories.length > 0) {
+    result = result.filter(p => selectedCategories.includes(p.category));
+  }
+
+  // 브랜드
+  if (selectedBrands.length > 0) {
+    result = result.filter(p => selectedBrands.includes(p.brand));
+  }
+
+  // 색상
+  if (selectedColors.length > 0) {
+    result = result.filter(p => selectedColors.includes(p.color));
+  }
+
+  // 가격
+  if (selectedPrices.length > 0) {
+    result = result.filter(p => {
+      return selectedPrices.some(range => {
+        if (range === "low") return p.price <= 200000;
+        if (range === "middle") return p.price > 200000 && p.price <= 400000;
+        if (range === "high") return p.price > 400000;
+        return false;
+      });
+    });
+  }
+
+  // 검색어
+  const searchTerm = searchInput ? searchInput.value.trim().toLowerCase() : "";
+  if (searchTerm) {
+    result = result.filter(p => {
+      return (
+        p.title.toLowerCase().includes(searchTerm) ||
+        p.brand.toLowerCase().includes(searchTerm)
+      );
+    });
+  }
+
+  currentPage = 1;
+  filteredData = result;
+
+  renderProducts(result);
+  renderPagination(result.length);
+}
+
+// 윈도우 너비별로 페이지당 상품 개수를 다르게 설정 (480px 미만/이상: 4개, 768px 이상: 6개, 1200px 이상: 8개)
+function updateCountPerPage() {
+  const width = window.innerWidth;
+  if (width >= 1200) {
+    countPerPage = 8;
+  } else if (width >= 768) {
+    countPerPage = 6;
+  } else {
+    countPerPage = 4;
+  }
+}
+
+// 윈도우 크기 조절 시 페이지당 상품 개수를 동적으로 갱신하고 필터 재적용
+let resizeTimeout;
+window.addEventListener("resize", () => {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    const prevCount = countPerPage;
+    updateCountPerPage();
+    if (prevCount !== countPerPage) {
+      currentPage = 1;
+      applyFilter();
+    }
+  }, 150);
+});
